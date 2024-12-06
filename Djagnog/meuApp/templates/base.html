@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}meuApp{% endblock %}</title>
+    <!-- css local -->
+    <link rel="stylesheet" href="{% static 'estilo.css' %}">
+    <!-- Pico.css -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.0.6/css/pico.min.css"
+    />
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <ul>
+              <li><a href="{% url 'index' %}" class="contrast logo a">Nome da Empresa</a></li>
+            </ul>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><button href="#">Login</button></li>
+            </ul>
+        </nav>
+    </header>
+    <hr>
+    <!-- ./ Header -->
+
+    <!-- Main -->
+    <main class="container">
+        
+        {% if messages %}
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        {% endif %}
+
+        {% block main %}{% endblock %}
+    </main>
+    <!-- ./ Main -->
+
+    <!-- Footer -->
+     <hr>
+    <footer class="container grid">
+        <a href="{% url 'cadastrar_produto' %}">Cadastrar Produto</a>
+        <a href="{% url 'listar_produto' %}">Listar Produto</a>
+        <p>&copy; 2024</p>
+    </footer>
+
+</body>
+</html>

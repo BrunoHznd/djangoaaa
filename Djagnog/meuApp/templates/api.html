@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %} Consumindo API Usuarios {% endblock %}
+
+{% block main %}
+    <h1>Consumindo API Usuarios</h1>
+
+    {% for user in dados %}
+        <p> {{user.id}} - {{user.name}} ({{user.email}})
+        </p>
+    {% endfor %}
+
+{% endblock %}

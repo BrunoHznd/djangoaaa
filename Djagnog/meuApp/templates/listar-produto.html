@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %} Produtos Cadastrados {% endblock %}
+
+{% block main %}
+
+    <h2>Produtos Cadastrados</h2>
+
+    {% if produtos %}
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Preço</th>
+                    <th>Categoria</th>
+                    <th colspan="2">Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for produto in produtos %}
+                <tr>
+                    <td>{{ produto.nome }}</td>
+                    <td>R$ {{ produto.preco }}</td>
+                    <td>{{ produto.categoria }}</td>
+                    <td>
+                        <a href="{% url 'excluir_produto' produto.id %}">
+                            Excluir
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'editar_produto' produto.id %}">
+                            Editar
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    {% else %}
+        <p>Nenhum Produto cadastrado !</p>
+    {% endif %}
+
+{% endblock %}
